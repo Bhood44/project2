@@ -50,6 +50,14 @@ public class User {
     @Column(name="phonenumber")
     private long phoneNumber;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public String getFirstname() {
         return firstname;
     }

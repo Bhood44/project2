@@ -1,14 +1,14 @@
-CREATE TABLE IF NOT EXISTS users(
+create table users (
 	userid serial PRIMARY KEY,
-	firstname(30),
-	lastname(30),
+	firstname varchar(30),
+	lastname varchar(30),
 	email varchar(30),
-	password(30),
+	password varchar(30),
 	birthday timestamp,
 	phonenumber integer
 );
 
-CREATE TABLE IF NOT EXISTS todos(
+create table todos(
 	todoid serial PRIMARY KEY,
 	user_id integer REFERENCES users(userid),
 	description varchar(200),

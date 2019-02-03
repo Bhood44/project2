@@ -2,6 +2,7 @@ package com.revature.plannerapp.dao;
 
 import com.revature.plannerapp.entity.User;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,15 +22,35 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    @Transactional
-    public List<User> findUsers(){
-      Session currentSession = entityManager.unwrap(Session.class);
+    public User findUserById(int theId){
+        Session currentSession = entityManager.unwrap(Session.class);
 
-      Query<User> theQuery = currentSession.createQuery("from User", User.class);
+        User theUser = currentSession.get(User.class, theId);
 
-      List<User> users = theQuery.getResultList();
+        return theUser;
+    }
 
-      return users;
+    @Override
+    public void addUser(User theUser){
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        currentSession.saveOrUpdate(theUser);
+        //save or update saves the user if the id==0; if id != 0, user is updated
+    }
+
+    @Override
+    public void deleteUser(int theId){
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Query theQuery = currentSession.createQuery(
+                "delete from User where userId =:userId"
+        );
+
+        theQuery.setParameter("userId", theId);
+
+        theQuery.executeUpdate();
+
     }
 
 }
