@@ -6,12 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-@Component
+@Repository
 public class UserDAOImpl implements UserDAO{
 
     private EntityManager entityManager;
@@ -54,3 +55,4 @@ public class UserDAOImpl implements UserDAO{
     }
 
 }
+

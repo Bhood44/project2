@@ -26,27 +26,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
-    @NotNull
     @Column(name="firstname")
     private String firstname;
 
-    @NotNull
     @Column(name="lastname")
     private String lastname;
 
-    @NotNull
     @Column(name="email")
     private String email;
 
-    @NotNull
     @Column(name="password")
     private String password;
 
-    @NotNull
     @Column(name="birthday")
     private Timestamp birthday;
 
-    @NotNull
     @Column(name="phonenumber")
     private long phoneNumber;
 

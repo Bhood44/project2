@@ -4,9 +4,10 @@ import com.revature.plannerapp.dao.UserDAO;
 import com.revature.plannerapp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO;

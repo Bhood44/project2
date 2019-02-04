@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("api/user")
 public class UserController {
 
@@ -45,11 +44,14 @@ public class UserController {
     @DeleteMapping("/deleteuser/{employeeId}")
     public String deleteUser(@PathVariable int theId) {
         User theUser = userService.findUser(theId);
+        userService.deleteUser(theUser.getUserId());
 
         if (theUser == null) {
             throw new RuntimeException("User ID not found -" + theId);
         }
         return "Deleted User ID - " + theId;
+
+        //todo add in some stuff to actually delete the user
     }
 }
 
